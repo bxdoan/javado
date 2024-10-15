@@ -16,6 +16,7 @@
 
 package example.restservice;
 
+import example.restservice.scheduledtasks.ScheduledTasks;
 import org.awaitility.Durations;
 import org.junit.jupiter.api.Test;
 

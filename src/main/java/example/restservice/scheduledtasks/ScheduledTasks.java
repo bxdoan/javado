@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package example.restservice;
+package example.restservice.scheduledtasks;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
