@@ -12,11 +12,22 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingController {
 
 	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
+	private final AtomicLong counter = new AtomicLong(); // count the number of requests
 
 	@GetMapping("/greeting")
-	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
+	public Greeting greeting(
+			@RequestParam(value = "name", defaultValue = "World") String name,
+			@RequestParam(value = "long_name", required = false) String long_name
+	) {
+		String str_temp;
+		System.out.println("name: " + name + " long_name: " + long_name);
+		if (long_name == null) {
+			str_temp = template + " long_name is not provided";
+		} else {
+			str_temp = template + " from %s";
+		}
+		System.out.println(str_temp);
+		return new Greeting(counter.incrementAndGet(), String.format(str_temp, name, long_name));
 	}
 
 	@GetMapping("/version_current")
@@ -46,4 +57,31 @@ public class GreetingController {
 		}
 		return version.toString();
 	}
+
+	@GetMapping("/create/user")
+	public String create_user(
+			@RequestParam(value = "name", required = true) String name,
+			@RequestParam(value = "email", required = true) String email
+	) {
+		return "Create user with name: " + name + " and email: " + email;
+	}
+
+	@GetMapping("/get/user")
+	public String get_user(
+	) {
+		return "Get user";
+	}
+
+	@GetMapping("/update/user")
+	public String update_user(
+	) {
+		return "Update user";
+	}
+
+	@GetMapping("/delete/user")
+	public String delete_user(
+	) {
+		return "Delete user";
+	}
+
 }
