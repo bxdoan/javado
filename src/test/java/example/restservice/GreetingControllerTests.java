@@ -1,5 +1,5 @@
 
-package restservice;
+package example.restservice;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -24,7 +24,7 @@ public class GreetingControllerTests {
     public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
         this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
+                .andExpect(jsonPath("$.content").value("Hello, World! long_name is not provided"));
     }
 
     @Test
@@ -32,7 +32,15 @@ public class GreetingControllerTests {
 
         this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+                .andExpect(jsonPath("$.content").value("Hello, Spring Community! long_name is not provided"));
+    }
+
+    @Test
+    public void paramNameAndLongNameGreetingShouldReturnTailoredMessage() throws Exception {
+
+        this.mockMvc.perform(get("/greeting").param("name", "Spring Community").param("long_name", "Spring"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value("Hello, Spring Community! from Spring"));
     }
 
 }
