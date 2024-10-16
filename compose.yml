@@ -1,21 +1,22 @@
 version: '3.1'
 services:
   db:
-    container_name: ${CONTAINER_NAME}
+    container_name: javado
     image: mysql:8.4
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     cap_add:
       - SYS_NICE
     restart: always
     environment:
-      MYSQL_DATABASE: $MYSQL_DATABASE
-      MYSQL_ROOT_PASSWORD: 'rootpw'
-      MYSQL_USER: "mysql"
+      MYSQL_DATABASE: quotes
+      MYSQL_ROOT_PASSWORD: 'verysecret'
+      MYSQL_PASSWORD: '112233'
+      MYSQL_USER: "myuser"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - '${PORT}:3306'
     volumes:
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./db/logs:/logs
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -2,6 +2,7 @@ plugins {
     id("java")
     id("org.springframework.boot") version "3.3.0"
     id("io.spring.dependency-management") version "1.1.5"
+    id("org.graalvm.buildtools.native") version "0.9.28"
 
 }
 
@@ -19,8 +20,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-test")
     implementation("javax.persistence:javax.persistence-api:2.2")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("com.h2database:h2")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-docker-compose")
+    runtimeOnly("com.mysql:mysql-connector-j")
 }
 
 
