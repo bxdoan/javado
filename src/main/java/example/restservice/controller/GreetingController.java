@@ -1,5 +1,6 @@
-package example.restservice.greeting;
+package example.restservice.controller;
 
+import example.restservice.entity.Greeting;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

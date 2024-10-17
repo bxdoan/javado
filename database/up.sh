@@ -7,7 +7,7 @@ echo "
 docker compose -f "$SCRIPT_HOME/mysql.yml" up -d --force-recreate
 "
 # run the container
-docker compose -f "$SCRIPT_HOME/mysql.yml" up -d --force-recreate  # ref. https://forums.docker.com/t/named-volume-with-postgresql-doesnt-keep-databases-data/7434/2
+docker compose -f "$SCRIPT_HOME/../compose.yml" up -d --force-recreate  # ref. https://forums.docker.com/t/named-volume-with-postgresql-doesnt-keep-databases-data/7434/2
 docker ps
 docker logs $CONTAINER_NAME
 # aftermath note

@@ -1,4 +1,4 @@
-package example.restservice.greeting;
+package example.restservice.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

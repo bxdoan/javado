@@ -1,4 +1,7 @@
-package example.restservice.greeting;
+package example.restservice.controller;
+
+import example.restservice.entity.User;
+import example.restservice.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
