@@ -1,3 +1,3 @@
-package example.restservice.entity;
+package example.restservice.entities;
 
 public record Greeting(long id, String content) { }

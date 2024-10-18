@@ -1,6 +1,6 @@
-package example.restservice.controller;
+package example.restservice.controllers;
 
-import example.restservice.entity.Greeting;
+import example.restservice.entities.Greeting;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +39,7 @@ public class GreetingController {
 	public String get_current_version_git_using_bash_cmd() {
 		String cmd = "git log -1 --pretty=format:\"%H\"";
 		StringBuilder version = new StringBuilder();
+		System.out.println("cmd: " + cmd);
 		Process process = null;
 		try {
 			process = Runtime.getRuntime().exec(cmd);
